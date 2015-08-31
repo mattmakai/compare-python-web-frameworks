@@ -1,6 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from twilio.rest import TwilioRestClient
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.wtf import Form
+from wtforms import StringField
+from wtforms.validators import Required, Length
 
 
 app = Flask(__name__)
@@ -16,10 +19,17 @@ old_contacts = [{'first_name': 'matt', 'last_name': 'makai',
                  'last_name': 'schooley', 'phone_number': '+12155551234'}]
 
 
-@app.route('/')
-def list_contacts():
+@app.route('/', methods=['GET', 'POST'])
+def contacts():
+    form = ContactForm()
+    if form.validate_on_submit():
+        contact = Contact()
+        form.populate_obj(contact)
+        db.session.add(contact)
+        db.session.commit()
+        return redirect(url_for('contacts'))
     contacts = Contact.query.all()
-    return render_template('contacts.html', contacts=contacts)
+    return render_template('contacts.html', contacts=contacts, form=form)
 
 
 
@@ -33,6 +43,15 @@ class Contact(db.Model):
     def __repr__(self):
         return '<Contact {0} {1}: {2}>'.format(first_name, last_name,
                                                phone_number)
+
+
+class ContactForm(Form):
+    first_name = StringField('First Name', validators=[Required(),
+                             Length(1, 100)])
+    last_name = StringField('Last Name', validators=[Required(),
+                            Length(1, 100)])
+    phone_number = StringField('Phone Number', validators=[Required(),
+                               Length(1, 32)])
 
 
 if __name__ == "__main__":

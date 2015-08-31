@@ -1,0 +1,10 @@
+<hr>
+<h3>Add Contact</h3>
+{% from "partials/_formhelpers.html" import render_field %}
+
+<form action="{{ url_for('contacts') }}" method="post">
+    {{ form.csrf_token }}
+    {{ render_field(form.first_name) }}
+    {{ render_field(form.last_name) }}
+    {{ render_field(form.phone_number) }}
+</form>
