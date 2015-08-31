@@ -5,9 +5,11 @@ app = Flask(__name__)
 client = TwilioRestClient()
 
 
+contacts = [{'first_name': 'matt', 'last_name': 'makai'}]
+
 @app.route('/')
-def phone():
-    return render_template('contacts.html')
+def list_contacts():
+    return render_template('contacts.html', contacts=contacts)
 
 
 if __name__ == "__main__":
