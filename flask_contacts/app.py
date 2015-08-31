@@ -7,7 +7,7 @@ client = TwilioRestClient()
 
 @app.route('/')
 def phone():
-    return render_template('phone.html')
+    return render_template('contacts.html')
 
 
 if __name__ == "__main__":
