@@ -10,6 +10,7 @@
           <th>Last</th>
           <th>Phone Number</th>
           <th>Delete</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,7 @@
               <td>{{ contact.last_name }}</td>
               <td>{{ contact.phone_number }}</td>
               <td><a href="{{ url_for('delete_contact', id=contact.id) }}" class="btn btn-danger">X</a></td>
+              <td><a href="{{ url_for('call', id=contact.id)}}">Call now!</a></td>
             </tr>
         {% else %}
             <tr>

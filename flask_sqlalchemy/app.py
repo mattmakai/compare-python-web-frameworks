@@ -1,9 +1,12 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, Response
 from twilio.rest import TwilioRestClient
+from twilio import twiml
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.wtf import Form
 from wtforms import StringField
 from wtforms.validators import Required, Length
+
+from config import TWILIO_NUMBER
 
 
 app = Flask(__name__)
@@ -33,6 +36,21 @@ def delete_contact(id):
     db.session.delete(contact)
     db.session.commit()
     return redirect(url_for('contacts'))
+
+
+@app.route('/call/<int:id>')
+def call(id):
+    contact = Contact.query.get_or_404(id)
+    client.calls.create(to=contact.phone_number, from_=TWILIO_NUMBER,
+        url="http://twimlbin.com/external/5433e2a6577fdbf5")
+    return redirect(url_for('contacts'))
+
+
+@app.route('/conference-twiml')
+def conference_twiml():
+    twiml_response = twiml.Response()
+    twiml_response.dial().conference('pycontacts')
+    return Response(str(twiml_response))
 
 
 class Contact(db.Model):
