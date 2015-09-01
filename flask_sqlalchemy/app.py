@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, url_for
 from twilio.rest import TwilioRestClient
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.wtf import Form
@@ -14,11 +14,6 @@ db = SQLAlchemy(app)
 client = TwilioRestClient()
 
 
-old_contacts = [{'first_name': 'matt', 'last_name': 'makai',
-                 'phone_number': '+12025551234'}, {'first_name': 'brent',
-                 'last_name': 'schooley', 'phone_number': '+12155551234'}]
-
-
 @app.route('/', methods=['GET', 'POST'])
 def contacts():
     form = ContactForm()
@@ -31,6 +26,13 @@ def contacts():
     contacts = Contact.query.all()
     return render_template('contacts.html', contacts=contacts, form=form)
 
+
+@app.route('/delete-contact/<int:id>')
+def delete_contact(id):
+    contact = Contact.query.get_or_404(id)
+    db.session.delete(contact)
+    db.session.commit()
+    return redirect(url_for('contacts'))
 
 
 class Contact(db.Model):
