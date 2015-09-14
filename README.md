@@ -1,8 +1,13 @@
 # Python Contacts
 Helping you select a Python web framework based on an example 
-contacts written many times with various frameworks.
+contacts written many times with various frameworks and ORMs.
+
+I live stream building the apps on 
+[Livecoding.tv](https://www.livecoding.tv/mattmakai).
 
 
-## Examples
-* `flask_contacts`
-* `bottle_contacts`
+## App Statuses
+Current statuses.
+
+* `flask_sqlalchemy`: about 90% done
+* `bottle_sqlalchemy`: just a stub
