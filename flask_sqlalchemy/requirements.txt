@@ -2,4 +2,4 @@ Flask==0.10.1
 Flask-SQLAlchemy==2.0
 Flask-WTF==0.12
 psycopg2==2.6.1
-twilio==4.4.0
+twilio==4.6.0
