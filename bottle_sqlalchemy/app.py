@@ -5,9 +5,12 @@ from bottle import (install, route, run, jinja2_template as template,
 from bottle.ext import sqlalchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
+from twilio.rest import TwilioRestClient
 
 
 SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', None)
+TWILIO_NUMBER = os.environ.get('TWILIO_NUMBER', None)
+
 TEMPLATE_PATH.append("./templates")
 
 Base = declarative_base()
@@ -23,6 +26,8 @@ sqlalchemy_plugin = sqlalchemy.Plugin(
 )
 
 install(sqlalchemy_plugin)
+
+client = TwilioRestClient()
 
 
 @route('/')
@@ -43,7 +48,20 @@ def delete(id, db):
 
 @route('/call/<id>')
 def call(id, db):
-    pass
+    contact = db.query(Contact).get(id)
+    if contact is None:
+        return 'error'
+    client.calls.create(to=contact.phone_number, from_=TWILIO_NUMBER,
+        url="http://twimlbin.com/external/5433e2a6577fdbf5")
+    return redirect('/')
+
+
+@route('/conference-twiml')
+def conference_twiml():
+    twiml_response = twiml.Response()
+    twiml_response.dial().conference('pycontacts')
+    return Response(str(twiml_response))
+
 
 
 @route('/static/css/<filename>')
