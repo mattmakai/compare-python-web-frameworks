@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2 class="sub-header">My Contacts</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>First</th>
+          <th>Last</th>
+          <th>Phone Number</th>
+          <th>Delete</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for contact in contacts %}
+            <tr>
+              <td>{{ contact.first_name }}</td>
+              <td>{{ contact.last_name }}</td>
+              <td>{{ contact.phone_number }}</td>
+              <td><a href="/delete/{{ contact.id }}" class="btn btn-danger">X</a></td>
+              <td><a href="/call/{{ contact.id }}">Call now!</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td>No contacts found.</td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

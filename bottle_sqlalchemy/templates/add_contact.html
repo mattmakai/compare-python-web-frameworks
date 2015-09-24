@@ -1,0 +1,16 @@
+<hr>
+<h3>Add Contact</h3>
+{% from "partials/_formhelpers.html" import render_field %}
+
+<div class="row">
+    <div class="col-md-4">
+        <form action="{{ url_for('contacts') }}" method="post">
+            {{ form.csrf_token }}
+            {{ render_field(form.first_name) }}
+            {{ render_field(form.last_name) }}
+            {{ render_field(form.phone_number) }}
+            <br>
+            <input type="submit" value="Save" class="btn btn-large btn-success"></input>
+        </form>
+    </div>
+</div>

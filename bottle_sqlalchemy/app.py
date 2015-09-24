@@ -1,12 +1,14 @@
 import os
 
-from bottle import route, run, template, install
+from bottle import (install, route, run, jinja2_template as template,
+                    redirect, static_file, TEMPLATE_PATH,)
 from bottle.ext import sqlalchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
 
 SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', None)
+TEMPLATE_PATH.append("./templates")
 
 Base = declarative_base()
 engine = create_engine(SQLALCHEMY_DATABASE_URI, echo=True)
@@ -26,13 +28,32 @@ install(sqlalchemy_plugin)
 @route('/')
 def index(db):
     contacts = db.query(Contact).all()
-    print contacts
-    return template('This is a template {{ stub }}.', stub="stub.")
+    return template('contacts.html', contacts=contacts, form=None)
 
 
-@route('/name/<name>')
-def name(name):
-    return template(index_html, author=name)
+@route('/delete/<id>')
+def delete(id, db):
+    contact = db.query(Contact).get(id)
+    if contact is None:
+        return 'error'
+    db.delete(contact)
+    db.commit()
+    return redirect('/')
+
+
+@route('/call/<id>')
+def call(id, db):
+    pass
+
+
+@route('/static/css/<filename>')
+def server_static_css(filename):
+    return static_file(filename, root='./static/css')
+
+
+@route('/static/js/<filename>')
+def server_static_css(filename):
+    return static_file(filename, root='./static/js')
 
 
 class Contact(Base):
