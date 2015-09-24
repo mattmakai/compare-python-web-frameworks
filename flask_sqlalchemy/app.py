@@ -61,8 +61,9 @@ class Contact(db.Model):
     phone_number = db.Column(db.String(32))
 
     def __repr__(self):
-        return '<Contact {0} {1}: {2}>'.format(first_name, last_name,
-                                               phone_number)
+        return '<Contact {0} {1}: {2}>'.format(self.first_name,
+                                               self.last_name,
+                                               self.phone_number)
 
 
 class ContactForm(Form):
