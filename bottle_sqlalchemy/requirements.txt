@@ -1,1 +1,2 @@
 bottle==0.12.8
+bottle-sqlalchemy==0.4.2
