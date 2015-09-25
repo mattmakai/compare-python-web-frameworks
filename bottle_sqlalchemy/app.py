@@ -1,7 +1,7 @@
 import os
 
 from bottle import (install, route, run, jinja2_template as template,
-                    redirect, static_file, TEMPLATE_PATH,)
+                    post, redirect, request, static_file, TEMPLATE_PATH,)
 from bottle.ext import sqlalchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -34,6 +34,34 @@ client = TwilioRestClient()
 def index(db):
     contacts = db.query(Contact).all()
     return template('contacts.html', contacts=contacts, form=None)
+
+
+@post('/')
+def new_contact(db):
+    first_name = request.forms.get('first_name', None)
+    last_name = request.forms.get('last_name', None)
+    phone_number = request.forms.get('phone_number', None)
+    if _validate_contact_data(first_name, last_name, phone_number):
+        _save_contact(db, first_name, last_name, phone_number)
+    return redirect('/')
+
+
+def _validate_contact_data(first_name, last_name, phone_number):
+    if not (first_name and len(first_name) > 0 and len(first_name) <= 100):
+        return False
+    if not (last_name and len(last_name) > 0 and len(last_name) <= 100):
+        return False
+    if not (phone_number and len(phone_number) > 0 and
+            len(phone_number) <= 32):
+        return False
+    return True
+
+def _save_contact(db, first_name, last_name, phone_number):
+    contact = Contact()
+    contact.first_name = first_name
+    contact.last_name = last_name
+    contact.phone_number = phone_number
+    db.add(contact)
 
 
 @route('/delete/<id>')

@@ -1,14 +1,23 @@
 <hr>
 <h3>Add Contact</h3>
-{% from "partials/_formhelpers.html" import render_field %}
 
 <div class="row">
     <div class="col-md-4">
-        <form action="{{ url_for('contacts') }}" method="post">
-            {{ form.csrf_token }}
-            {{ render_field(form.first_name) }}
-            {{ render_field(form.last_name) }}
-            {{ render_field(form.phone_number) }}
+        <form action="/" method="post">
+            <dt style="text-align: left;" class="admin-field"><label for="phone_number">First Name</label></dt>
+            <dd>
+            <input type="text" name="first_name" class="form-control"></input>
+            </dt>
+
+            <dt style="text-align: left;" class="admin-field"><label for="phone_number">Last Name</label></dt>
+            <dd>
+            <input type="text" name="last_name" class="form-control"></input>
+            </dd>
+
+            <dt style="text-align: left;" class="admin-field"><label for="phone_number">Phone Number</label></dt>
+            <dd>
+            <input type="text" name="phone_number" class="form-control"></input>
+            </dd>
             <br>
             <input type="submit" value="Save" class="btn btn-large btn-success"></input>
         </form>
