@@ -15,6 +15,6 @@ everyone into a conference call.
 Current statuses.
 
 * `flask_sqlalchemy`: done, but probably needs code clean up
-* `bottle_sqlalchemy`: almost done, needs form handling to add contacts
-* `morepath_sqlalchemy`: not yet started, next on list
-* `django_default_orm`: not yet started, after morepath
+* `bottle_sqlalchemy`: done, also needs code clean up
+* `morepath_sqlalchemy`: initial commit, not yet working
+* `django_default_orm`: not yet started, after morepath version
