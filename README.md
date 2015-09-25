@@ -14,5 +14,7 @@ everyone into a conference call.
 ## App Statuses
 Current statuses.
 
-* `flask_sqlalchemy`: about 90% done
-* `bottle_sqlalchemy`: just a stub
+* `flask_sqlalchemy`: done, but probably needs code clean up
+* `bottle_sqlalchemy`: almost done, needs form handling to add contacts
+* `morepath_sqlalchemy`: not yet started, next on list
+* `django_default_orm`: not yet started, after morepath
