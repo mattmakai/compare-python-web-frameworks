@@ -15,7 +15,7 @@ everyone into a conference call.
 
 | Name | Framework | Templates | Forms | ORM | Status |
 |------|-----------|-----------|-------|-----|--------|
-| [flask\_jinja2\_sqlalchemy](https://github.com/makaimc/python-web-framework-comparison/tree/master/flask_sqlalchemy) | Flask         | Jinja2            | WTForms       | SQLAlchemy    | 70%      |
+| [flask\_jinja2\_sqlalchemy](https://github.com/makaimc/python-web-framework-comparison/tree/master/flask_sqlalchemy) | [Flask](https://www.fullstackpyhton.com/) | Jinja2            | WTForms       | [SQLAlchemy](https://www.fullstackpython.com/object-relational-mappers-orms.html) | 70%      |
 
 
 
