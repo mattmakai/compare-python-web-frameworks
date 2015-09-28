@@ -13,9 +13,9 @@ everyone into a conference call.
 
 ## App Statuses
 
-| Name | Web Framework | Templating Engine | Form Handling | Database |
-|---------------------------------------------------------------------------------------------------------------------:|---------------|-------------------|---------------|----------|
-| [flask\_jinja2\_sqlalchemy](https://github.com/makaimc/python-web-framework-comparison/tree/master/flask_sqlalchemy) | Flask         | Jinja2            | WTForms       | PostgreSQL |
+| Name | Framework | Template Engine | ORM | Status |
+|----------------------------------------------------------------------------------------------------------------------|---------------|-------------------|---------------|----------|
+| [flask\_jinja2\_sqlalchemy](https://github.com/makaimc/python-web-framework-comparison/tree/master/flask_sqlalchemy) | Flask         | Jinja2            | SQLAlchemy    | 70%      |
 
 
 
