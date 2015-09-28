@@ -12,6 +12,13 @@ everyone into a conference call.
 
 
 ## App Statuses
+
+| Web Framework | Templating Engine | Form Handling |
+|---------------|-------------------|---------------|
+| Flask         | Jinja2            | WTForms       |
+
+
+
 Current statuses.
 
 * `flask_sqlalchemy`: done, but probably needs code clean up
