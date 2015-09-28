@@ -1,27 +1,34 @@
 # Python Web Frameworks Comparison
-Helping you select a Python web framework based on an example 
-contacts written many times with various frameworks and ORMs.
+Have you ever wanted to see how web application code differs based on
+using 
+[Django](http://www.fullstackpython.com/django.html), 
+[Flask](http://www.fullstackpython.com/flask.html), 
+[Bottle](http://www.fullstackpython.com/bottle.html) 
+or some other 
+[web framework](http://www.fullstackpython.com/web-frameworks.html)? 
+This repository contains the same non-trivial web app built with 
+different web frameworks, 
+[object-relational mappers](http://www.fullstackpython.com/object-relational-mappers-orms.html), 
+form handlers and templating engines. 
 
-I live stream building the apps on 
-[Livecoding.tv](https://www.livecoding.tv/mattmakai).
+
+## What is the web app?
+The application is a contacts manager with standard create, read, update
+and delete (CRUD) situations along with some 
+[Twilio Voice](https://twilio.com/docs) to make the
+application useful by handling conference calling and transcriptions. 
 
 
-## What's the web app?
-We're building a contacts manager that can call selected numbers and put 
-everyone into a conference call.
-
-
-## App Statuses
-
+## Code status
 | Name | Framework | Templates | Forms | ORM | Status |
 |------|-----------|-----------|-------|-----|--------|
-| [flask\_jinja2\_sqlalchemy](https://github.com/makaimc/python-web-framework-comparison/tree/master/flask_sqlalchemy) | [Flask](https://www.fullstackpython.com/flask.html) | Jinja2 | WTForms | [SQLAlchemy](https://www.fullstackpython.com/object-relational-mappers-orms.html) | 70% |
+| [flask\_jinja\_sqlalchemy](https://github.com/makaimc/compare-python-web-frameworks/tree/master/flask_jinja_sqlalchemy) | [Flask](http://www.fullstackpython.com/flask.html) | Jinja | WTForms | [SQLAlchemy](http://www.fullstackpython.com/object-relational-mappers-orms.html) | 70% |
+| [bottle\_jinja\_sqlalchemy](https://github.com/makaimc/compare-python-web-frameworks/tree/master/bottle_jinja_sqlalchemy) | Jinja | | [SQLAlchemy](http://www.fullstackpython.com/object-relational-mappers.orms.html) | 50% |
+| [morepath\_jinja\_sqlalchemy](https://github.com/makaimc/compare-python-web-frameworks/tree/master/morepath_jinja_sqlalchemy) | Jinja | | [SQLAlchemy](http://www.fullstackpython.com/object-relational-mappers.orms.html) | 1% |
+| [django\_defaults](https://github.com/makaimc/compare-python-web-frameworks/tree/master/django_defaults) | Django | Django Forms | [Django ORM](http://www.fullstackpython.com/object-relational-mappers.orms.html) | 0% |
 
 
+## Watch the code being written
+I live stream building the apps on my
+[Livecoding.tv](https://www.livecoding.tv/mattmakai) channel.
 
-Current statuses.
-
-* `flask_sqlalchemy`: done, but probably needs code clean up
-* `bottle_sqlalchemy`: done, also needs code clean up
-* `morepath_sqlalchemy`: initial commit, not yet working
-* `django_default_orm`: not yet started, after morepath version

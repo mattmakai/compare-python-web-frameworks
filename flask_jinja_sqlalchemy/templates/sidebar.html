@@ -1,0 +1,9 @@
+<div class="col-sm-3 col-md-2 sidebar">
+  <ul class="nav nav-sidebar">
+    <li{% if active == 'dashboard' %} class="active"{% endif %}><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+      <li{%  class="active"><a href="#">Contacts <span class="sr-only">(current)</span></a></li>
+    <li><a href="#">New Contact</a></li>
+    <li><a href="#">Transcriptions</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</div>
