@@ -17,11 +17,6 @@ db = SQLAlchemy(app)
 client = TwilioRestClient()
 
 
-@app.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html', active='dashboard')
-
-
 @app.route('/', methods=['GET', 'POST'])
 def contacts():
     form = ContactForm()
