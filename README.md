@@ -27,6 +27,8 @@ application useful by handling conference calling and transcriptions.
 | [morepath\_jinja\_sqlalchemy](https://github.com/makaimc/compare-python-web-frameworks/tree/master/morepath_jinja_sqlalchemy) | [Morepath](http://www.fullstackpython.com/morepath.html) | Jinja | | [SQLAlchemy](http://www.fullstackpython.com/object-relational-mappers.orms.html) |
 | [django\_defaults](https://github.com/makaimc/compare-python-web-frameworks/tree/master/django_defaults) | [Django](http://www.fullstackpython.com/django.html) | default | default | [Django ORM](http://www.fullstackpython.com/object-relational-mappers.orms.html) |
 
+Note: Django version broken until next stream. Morepath version just starting.
+
 
 ## Watch the code being written
 I live stream building the apps on my
