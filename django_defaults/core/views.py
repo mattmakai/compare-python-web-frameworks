@@ -13,6 +13,9 @@ def contacts(request):
                                                  'form': form})
     elif request.method == 'POST':
         # form handling code
-        return redirect('core:contacts')
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            print 'form valid'
+        return redirect('core:contacts', form.errors)
 
 
