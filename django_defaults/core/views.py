@@ -12,10 +12,10 @@ def contacts(request):
         return render(request, 'contacts.html', {"contacts": contacts,
                                                  'form': form})
     elif request.method == 'POST':
-        # form handling code
         form = ContactForm(request.POST)
         if form.is_valid():
-            print 'form valid'
-        return redirect('core:contacts', form.errors)
-
+            # save valid form object
+            form.save()
+            return redirect('core:contacts')
+        return render(request, 'contacts.html', {"form": form})
 
