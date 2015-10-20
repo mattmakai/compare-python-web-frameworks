@@ -19,7 +19,7 @@
               <td>{{ contact.first_name }}</td>
               <td>{{ contact.last_name }}</td>
               <td>{{ contact.phone_number }}</td>
-              <td><a href="#" class="btn btn-danger">X</a></td>
+              <td><a href="{% url 'core:delete-contact' contact.id %}" class="btn btn-danger">X</a></td>
               <td><a href="#">Call now!</a></td>
             </tr>
         {% empty %}
