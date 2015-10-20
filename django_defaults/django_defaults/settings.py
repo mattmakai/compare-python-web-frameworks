@@ -103,3 +103,7 @@ STATIC_URL = '/static/'
 # Crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+
+# Twilio
+TWILIO_NUMBER = os.environ.get('TWILIO_NUMBER')
+
