@@ -9,7 +9,7 @@ or some
 This repository contains the same non-trivial web app built with 
 various [frameworks](http://www.fullstackpython.com/web-frameworks.html), 
 [object-relational mappers](http://www.fullstackpython.com/object-relational-mappers-orms.html), 
-form handlers and templating engines. 
+form handlers and [templating engines](http://www.fullstackpython.com/template-engines.html). 
 
 
 ## What is the web app?
